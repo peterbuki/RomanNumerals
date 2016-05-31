@@ -12,7 +12,7 @@ public class RomanNumerals {
                 int number = Integer.parseInt(in) ;
                 if (number > 3999)
                     showUsage();
-                String result = RomanConverter.convert(number) ;
+                String result = RomanConverter.convertToRoman(number) ;
                 System.out.println(result) ;
                 continue;
             }
@@ -20,14 +20,14 @@ public class RomanNumerals {
             catch (NumberFormatException e)
             {
             }
-            // Failed to convert argument
+            // Failed to convertToRoman argument
             catch (Exception e)
             {
             }
 
             try
             {
-                int result = RomanConverter.convert(in) ;
+                int result = RomanConverter.convertToArabic(in) ;
                 System.out.println(result) ;
             }
             catch (Exception e)

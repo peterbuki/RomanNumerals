@@ -4,38 +4,7 @@ package com.ericsson.peterbuki;
  * Created by epetbuk on 2016.05.18..
  */
 public class RomanConverter {
-    public static enum RomanNumber
-    {
-        M(1000,"M"), CM(900, "CM"), D(500, "D"), CD(400, "CD"), C(100,"C"),
-        XC(90, "XC"), XL(40, "XL"),
-        L(50, "L"), X(10, "X"), IX(9, "IX"),
-        V(5, "V"), IV(4, "IV"), I(1, "I"), Z(0, "Z") ;
 
-        int value;
-        String name;
-
-        RomanNumber(int n, String c)
-        {
-            value =n ;
-            name =c ;
-        }
-
-        private static RomanNumber findNearestByValue(int value)
-        {
-            for (RomanNumber n : RomanNumber.values())
-                if (n.value<=value)
-                    return n ;
-            return Z;
-        }
-
-        private static RomanNumber findByName(String name)
-        {
-            for (RomanNumber n : RomanNumber.values())
-                if (n.name.equalsIgnoreCase(name))
-                    return n ;
-            return Z ;
-        }
-    }
 
     protected RomanConverter()
     {
@@ -46,20 +15,20 @@ public class RomanConverter {
         }
     }
 
-    public static int convert(String in)
+    public static int convertToArabic(String in)
     {
         int result = 0 ;
         String toDecode ;
         for (int position = 0; position < in.length(); position++)
         {
-            RomanNumber rn = null ;
+            RomanNumber rn = RomanNumber.Z ;
 
-            // try to convert 2 characters
+            // try to convertToRoman 2 characters
             if (in.length()-position > 1)
                 rn = RomanNumber.findByName(in.substring(position, position+2)) ;
 
             // converted 2 characters, pos increased by additional 1
-            if (rn != null)
+            if (rn != RomanNumber.Z)
                 position++ ;
             else
                 rn = RomanNumber.findByName(in.substring(position, position+1)) ;
@@ -69,13 +38,13 @@ public class RomanConverter {
         return result ;
     }
 
-    public static String convert(int in) throws Exception
+    public static String convertToRoman(int in)
     {
-        RomanNumber n =  RomanNumber.findNearestByValue(in) ;
+        RomanNumber n =  RomanNumber.findByValue(in) ;
 
         if ( n.value == in )
             return n.name ;
         else
-            return n.name + convert(in-n.value) ;
+            return n.name + convertToRoman(in-n.value) ;
     }
 }

@@ -15,11 +15,11 @@ public enum RomanNumber
 
     RomanNumber(int n, String c)
     {
-        value =n ;
-        name =c ;
+        value = n;
+        name = c;
     }
 
-    private static RomanNumber findNearestByValue(int value)
+    protected static RomanNumber findByValue(int value)
     {
         for (RomanNumber n : RomanNumber.values())
             if (n.value<=value)
@@ -27,7 +27,7 @@ public enum RomanNumber
         return Z;
     }
 
-    private static RomanNumber findByName(String name)
+    protected static RomanNumber findByName(String name)
     {
         for (RomanNumber n : RomanNumber.values())
             if (n.name.equalsIgnoreCase(name))

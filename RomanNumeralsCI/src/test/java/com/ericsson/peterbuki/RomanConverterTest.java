@@ -12,8 +12,8 @@ public class RomanConverterTest extends RomanConverter {
     {
         try
         {
-            assertEquals(RomanNumber.M, RomanNumber.findNearestByValue(1001)) ;
-            assertEquals(RomanNumber.CM, RomanNumber.findNearestByValue(999)) ;
+            assertEquals(RomanNumber.M, RomanNumber.findByValue(1001)) ;
+            assertEquals(RomanNumber.CM, RomanNumber.findByValue(999)) ;
         }
         catch (Exception e)
         {
@@ -40,20 +40,12 @@ public class RomanConverterTest extends RomanConverter {
     @Test
     public void convert()
     {
-        try {
-
-
-            assertEquals(3, convert("III"));
-            assertEquals(5, convert("V"));
-            assertEquals(291, convert("CCXCI"));
-            assertEquals("XXIX", convert(29));
-            assertEquals("XXXVIII", convert(38));
-            assertEquals("MCMXCIX", convert(1999));
-        }
-        catch (Exception e)
-        {
-            fail("Unexpected Exception :)");
-        }
+        assertEquals(3, RomanConverter.convertToArabic("III"));
+        assertEquals(5, RomanConverter.convertToArabic("V"));
+        assertEquals(291, RomanConverter.convertToArabic("CCXCI"));
+        assertEquals("XXIX", RomanConverter.convertToRoman(29));
+        assertEquals("XXXVIII", RomanConverter.convertToRoman(38));
+        assertEquals("MCMXCIX", RomanConverter.convertToRoman(1999));
     }
 
 }
