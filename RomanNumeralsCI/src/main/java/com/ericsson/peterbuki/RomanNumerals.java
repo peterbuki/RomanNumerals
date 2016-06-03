@@ -1,41 +1,28 @@
 package com.ericsson.peterbuki;
 
+import static com.ericsson.peterbuki.RomanConverter.isArabic ;
+import static com.ericsson.peterbuki.RomanConverter.isRoman ;
+import static com.ericsson.peterbuki.RomanConverter.convertToArabic ;
+import static com.ericsson.peterbuki.RomanConverter.convertToRoman ;
+
 public class RomanNumerals {
+    private RomanNumerals() {}
 
     public static void main(String[] args) {
         if (args.length == 0)
             showUsage() ;
         for (String in : args)
         {
-            try
+            if (isArabic(in))
             {
-                int number = Integer.parseInt(in) ;
-                if (number > 3999)
-                    showUsage();
-                String result = RomanConverter.convertToRoman(number) ;
-                System.out.println(result) ;
-                continue;
+                System.out.println(convertToRoman(in)) ;
             }
-            // Failed to interpret argument as number
-            catch (NumberFormatException e)
+            else if (isRoman(in))
             {
+                System.out.println(convertToArabic(in)) ;
             }
-            // Failed to convertToRoman argument
-            catch (Exception e)
-            {
-            }
-
-            try
-            {
-                int result = RomanConverter.convertToArabic(in) ;
-                System.out.println(result) ;
-            }
-            catch (Exception e)
-            {
-               showUsage() ;
-               break ;
-            }
-
+            else
+                showUsage();
         }
     }
 

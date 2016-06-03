@@ -3,7 +3,7 @@ package com.ericsson.peterbuki;
 /**
  * Created by epetbuk on 2016.05.31..
  */
-public enum RomanNumber
+public enum RomanNumberEnum
 {
     M(1000,"M"), CM(900, "CM"), D(500, "D"), CD(400, "CD"), C(100,"C"),
     XC(90, "XC"), XL(40, "XL"),
@@ -13,23 +13,23 @@ public enum RomanNumber
     int value;
     String name;
 
-    RomanNumber(int n, String c)
+    RomanNumberEnum(int n, String c)
     {
         value = n;
         name = c;
     }
 
-    protected static RomanNumber findByValue(int value)
+    protected static RomanNumberEnum findByValue(int value)
     {
-        for (RomanNumber n : RomanNumber.values())
+        for (RomanNumberEnum n : RomanNumberEnum.values())
             if (n.value<=value)
                 return n ;
         return Z;
     }
 
-    protected static RomanNumber findByName(String name)
+    protected static RomanNumberEnum findByName(String name)
     {
-        for (RomanNumber n : RomanNumber.values())
+        for (RomanNumberEnum n : RomanNumberEnum.values())
             if (n.name.equalsIgnoreCase(name))
                 return n ;
         return Z ;
