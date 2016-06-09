@@ -1,68 +1,71 @@
 package com.ericsson.peterbuki;
-import org.junit.Test ;
+
+import org.junit.Test;
+
+import static com.ericsson.peterbuki.RomanConverter.isConvertibleToArabic;
+import static com.ericsson.peterbuki.RomanConverter.isConvertibleToRoman;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.fail;
-import static com.ericsson.peterbuki.RomanConverter.isArabic;
-import static com.ericsson.peterbuki.RomanConverter.isRoman;
 
 /**
  * Created by epetbuk on 2016.05.18..
  */
-public class RomanConverterTest extends RomanConverter {
+public class RomanConverterTest
+{
     @Test
     public void isRomanTest_with_every_roman_character()
     {
-        assertTrue(isRoman("MCDXLIV")) ; // Fails
+        assertTrue(isConvertibleToArabic("MCDXLIV")); // Fails
     }
 
     @Test
     public void isRomanTest_with_internal_character_so_returns_false()
     {
-        assertFalse(isRoman("MCDXLIVZ")) ;
+        assertFalse(isConvertibleToArabic("MCDXLIVZ"));
     }
 
     @Test
     public void isRomanTest_with_not_roman_string()
     {
-        assertFalse(isRoman("ALMAFA")) ;
+        assertFalse(isConvertibleToArabic("ALMAFA"));
     }
 
     @Test
     public void isArabicTest_with_maximum_value()
     {
-        assertTrue(isArabic("3999")) ;
+        assertTrue(isConvertibleToRoman("3999"));
     }
 
     @Test
     public void isArabicTest_with_too_high_value()
     {
-        assertFalse(isArabic("4000")) ;
+        assertFalse(isConvertibleToRoman("4000"));
     }
 
     @Test
     public void isArabicTest_with_character_string()
     {
-        assertFalse(isArabic("ALMAFA")) ;
+        assertFalse(isConvertibleToRoman("ALMAFA"));
     }
 
     @Test
     public void isArabicTest_with_zero_string()
     {
-        assertTrue(isArabic("0")) ;
+        assertTrue(isConvertibleToRoman("0"));
     }
 
     @Test
     public void findByValueTest_with_1001()
     {
-        assertEquals(RomanNumberEnum.M, RomanNumberEnum.findByValue(1001)) ;
+        assertEquals(RomanNumberEnum.M, RomanNumberEnum.findByValue(1001));
     }
 
     @Test
     public void findByValueTest_with_999()
     {
-        assertEquals(RomanNumberEnum.CM, RomanNumberEnum.findByValue(999)) ;
+        assertEquals(RomanNumberEnum.CM, RomanNumberEnum.findByValue(999));
     }
 
     @Test

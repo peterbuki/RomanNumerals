@@ -8,7 +8,7 @@ public enum RomanNumberEnum
     M(1000,"M"), CM(900, "CM"), D(500, "D"), CD(400, "CD"), C(100,"C"),
     XC(90, "XC"), XL(40, "XL"),
     L(50, "L"), X(10, "X"), IX(9, "IX"),
-    V(5, "V"), IV(4, "IV"), I(1, "I"), Z(0, "Z") ;
+    V(5, "V"), IV(4, "IV"), I(1, "I"), UNKNOWN(0, "UNKNOWN") ;
 
     int value;
     String name;
@@ -24,7 +24,12 @@ public enum RomanNumberEnum
         for (RomanNumberEnum n : RomanNumberEnum.values())
             if (n.value<=value)
                 return n ;
-        return Z;
+        return UNKNOWN;
+    }
+
+    protected static RomanNumberEnum findByName(char name)
+    {
+        return findByName(String.valueOf(name)) ;
     }
 
     protected static RomanNumberEnum findByName(String name)
@@ -32,6 +37,6 @@ public enum RomanNumberEnum
         for (RomanNumberEnum n : RomanNumberEnum.values())
             if (n.name.equalsIgnoreCase(name))
                 return n ;
-        return Z ;
+        return UNKNOWN;
     }
 }

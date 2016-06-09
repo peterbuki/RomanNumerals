@@ -1,7 +1,7 @@
 package com.ericsson.peterbuki;
 
-import static com.ericsson.peterbuki.RomanConverter.isArabic ;
-import static com.ericsson.peterbuki.RomanConverter.isRoman ;
+import static com.ericsson.peterbuki.RomanConverter.isConvertibleToRoman;
+import static com.ericsson.peterbuki.RomanConverter.isConvertibleToArabic;
 import static com.ericsson.peterbuki.RomanConverter.convertToArabic ;
 import static com.ericsson.peterbuki.RomanConverter.convertToRoman ;
 
@@ -13,11 +13,11 @@ public class RomanNumerals {
             showUsage() ;
         for (String in : args)
         {
-            if (isArabic(in))
+            if (isConvertibleToRoman(in))
             {
                 System.out.println(convertToRoman(in)) ;
             }
-            else if (isRoman(in))
+            else if (isConvertibleToArabic(in))
             {
                 System.out.println(convertToArabic(in)) ;
             }
