@@ -11,7 +11,7 @@ public class RomanConverter
     {
     }
 
-    public static boolean isConvertibleToArabic( String in )
+    public static boolean isConvertibleToArabic(String in)
     {
         for (int pos = 0; pos < in.length(); pos++)
         {
@@ -23,13 +23,12 @@ public class RomanConverter
         return true;
     }
 
-    public static int convertToArabic( String in )
+    public static int convertToArabic(String in)
     {
         boolean wasLastDouble;
         int result = 0;
         int position = 0;
         while (position < in.length())
-//        for (int position = 0; position < in.length(); position+=wasLastDouble?2:1)
         {
             wasLastDouble = false;
             RomanNumberEnum rn = RomanNumberEnum.UNKNOWN;
@@ -51,51 +50,38 @@ public class RomanConverter
             }
 
             result += rn.value;
-            /*
-            if (wasLastDouble)
-            {
-                position+=2;
-            }
-            else
-            {
-                position++;
-            }
-            */
             // if double latin number (e.g.: IX) were converted, step position by 2
             position += (wasLastDouble ? 2 : 1);
         }
         return result;
     }
 
-    public static boolean isConvertibleToRoman( String in )
-    {
-        boolean result;
-        try
-        {
-            int number = Integer.parseInt(in);
-            result = (number <= MAX_VALUE);
-        }
-        catch (NumberFormatException e)
-        {
-            result = false;
-        }
-        return result;
-    }
-
-    public static String convertToRoman( String in )
+    private static int convertToInt(String in)
     {
         try
         {
             int number = Integer.parseInt(in);
-            return convertToRoman(number);
+            return number;
         }
         catch (NumberFormatException e)
         {
-            return "";
+            return 0;
         }
     }
 
-    public static String convertToRoman( int in )
+    public static boolean isConvertibleToRoman(String in)
+    {
+        int number = convertToInt(in);
+        return number > 0 && number <= MAX_VALUE;
+    }
+
+    public static String convertToRoman(String in)
+    {
+        int number = convertToInt(in);
+        return convertToRoman(number);
+    }
+
+    public static String convertToRoman(int in)
     {
         RomanNumberEnum n = RomanNumberEnum.findByValue(in);
 
