@@ -32,8 +32,7 @@ public class IntegrationTest
     }
 
     @Test
-    public void print_usage_for_no_arguments()
-    {
+    public void print_usage_for_no_arguments() throws Exception {
         TextMunger.main();
         assertTrue(out.toString().equals(""));
         assertTrue(err.toString().equals("Usage: java -jar TextMunger.jar 'Text to be munged'" +
@@ -41,7 +40,7 @@ public class IntegrationTest
     }
 
     @Test
-    public void mungle_one_sentence() {
+    public void mungle_one_sentence() throws Exception {
         TextMunger.main("Some text to be munged.");
         assertTrue(err.toString().equals(""));
         assertTrue(out.toString().equals("Smoe txet to be megnud." +
@@ -49,7 +48,7 @@ public class IntegrationTest
     }
 
     @Test
-    public void randomized_mungling_test() {
+    public void randomized_mungling_test() throws Exception {
         // checking each word for first and last character
         assertTrue(false);
     }

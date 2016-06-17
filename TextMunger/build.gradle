@@ -28,13 +28,15 @@ sonarqube {
 
 version = '0.1'
 
-
 repositories {
 	mavenCentral() 
+	jcenter()
 	}  
 
 dependencies {
 	testCompile 'junit:junit:4.12' 
+	testCompile 'org.mockito:mockito-core:1.+'
+	testCompile 'org.powermock:powermock-module-junit4:1.6.5'
 	}
 
 jar {
