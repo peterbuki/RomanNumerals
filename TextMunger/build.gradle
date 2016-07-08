@@ -26,22 +26,24 @@ sonarqube {
 }
 
 
-version = '1.0'
-
+version = '0.1'
 
 repositories {
-	mavenCentral()
-	}
+	mavenCentral() 
+	jcenter()
+	}  
 
 dependencies {
-	testCompile 'junit:junit:4.12'
+	testCompile 'junit:junit:4.12' 
+	testCompile 'org.mockito:mockito-core:1.+'
+	testCompile 'org.powermock:powermock-module-junit4:1.6.5'
 	}
 
 jar {
 	manifest {
-		attributes 'Implementation-Title': 'Roman Numerals CI',
+		attributes 'Implementation-Title': 'Text Munger',
 			'Implementation-Version': version,
-			'Main-Class': 'com.ericsson.peterbuki.RomanNumerals'
+			'Main-Class': 'com.ericsson.peterbuki.TextMunger'
 		}
 	}
 
