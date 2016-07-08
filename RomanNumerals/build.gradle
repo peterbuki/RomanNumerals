@@ -30,11 +30,11 @@ version = '1.0'
 
 
 repositories {
-	mavenCentral() 
-	}  
+	mavenCentral()
+	}
 
 dependencies {
-	testCompile 'junit:junit:4.12' 
+	testCompile 'junit:junit:4.12'
 	}
 
 jar {
