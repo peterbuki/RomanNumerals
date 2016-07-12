@@ -3,28 +3,26 @@ plugins {
     id "java"
 }
 
-def user_name = "epetbuk"
-
-def get_user_name = {
-    String un = user_name
+def user_name = {
+    String un = "epetbuk"
     if (System.getenv("TRAVIS") != null) {
-        un = "ci-" + user_name
+         un = "ci-" + un
     }
     return un
-}
+}  
+def project_name = "${user_name()}_practice"
 
 sonarqube {
     properties {
-        property "sonar.host.url", "http://sonar-ezsofab.rhcloud.com/"
+        property "sonar.host.url", "http://ec2-54-191-121-137.us-west-2.compute.amazonaws.com:9000/"
         property "sonar.java.source", "1.8"
         property "sonar.sources", "src/main/java"
         property "sonar.java.tests", "src/test/java"
         property "sonar.scm.provider", "git"
-        property "sonar.projectKey", get_user_name() + "_" + project.name
-        property "sonar.projectName", get_user_name() + "_" + project.name
+        property "sonar.projectKey", project_name
+        property "sonar.projectName", project_name
     }
 }
-
 
 version = '1.0'
 
