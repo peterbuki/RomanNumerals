@@ -19,13 +19,30 @@ public class RomanNumerals2Test
 
     @Test
     public void testSingleNumeral() {
-        assertEquals(1, romanConverter.convert("I")) ;
-        assertEquals(5, romanConverter.convert("V")) ;
-        assertEquals(10, romanConverter.convert("X")) ;
-        assertEquals(50, romanConverter.convert("L")) ;
-        assertEquals(100, romanConverter.convert("C")) ;
-        assertEquals(500, romanConverter.convert("D")) ;
-        assertEquals(1000, romanConverter.convert("M")) ;
+        assertEquals(1, romanConverter.convertRomanToArabic("I")) ;
+        assertEquals(5, romanConverter.convertRomanToArabic("V")) ;
+        assertEquals(10, romanConverter.convertRomanToArabic("X")) ;
+        assertEquals(50, romanConverter.convertRomanToArabic("L")) ;
+        assertEquals(100, romanConverter.convertRomanToArabic("C")) ;
+        assertEquals(500, romanConverter.convertRomanToArabic("D")) ;
+        assertEquals(1000, romanConverter.convertRomanToArabic("M")) ;
+    }
+
+    @Test
+    public void testMultiNumeral() {
+        assertEquals(9, romanConverter.convertRomanToArabic("IX"));
+        assertEquals(3999, romanConverter.convertRomanToArabic("MMMCMXCIX"));
+    }
+
+    @Test
+    public void testHighestArabic() {
+        assertEquals("MMMCMXCIX", romanConverter.convertArabicToRoman(3999));
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void invalidAlphabetThrowsException()
+    {
+        romanConverter.convertRomanToArabic("IDCLUXVM");
     }
 
 
