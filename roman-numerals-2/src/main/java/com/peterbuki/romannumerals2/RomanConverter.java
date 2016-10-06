@@ -6,31 +6,34 @@ public class RomanConverter
 
     public enum RomanNumeral
     {
-        M(1000, 'M'),
-        D(500, 'D'),
-        C(100, 'C'),
-        L(50, 'L'),
-        X(10, 'X'),
-        V(5, 'V'),
-        I(1, 'I'),
-        Invalid(0, 'Z');
+        M(1000),
+        CM(900),
+        D(500),
+        CD(400),
+        C(100),
+        XC(90),
+        L(50),
+        X(10),
+        IX(9),
+        V(5),
+        IV(4),
+        I(1),
+        Invalid(0);
 
         public final int value;
-        public final char alphabet;
 
-        RomanNumeral(int i, char c) {
-            value=i;
-            alphabet=c;
+        RomanNumeral(int value) {
+            this.value = value;
         }
 
         public boolean isValid() {
             return this!=Invalid;
         }
 
-        public static RomanNumeral getByAlphabet( char c) {
+        public static RomanNumeral getByAlphabet(String name) {
             for (RomanNumeral r : RomanNumeral.values())
             {
-                if (c == r.alphabet) {
+                if (name.equalsIgnoreCase(r.name())) {
                     return r;
                 }
             }
@@ -59,12 +62,12 @@ public class RomanConverter
         String result = "";
         while ( remaining > 0)
         {
-            for (RomanNumeral r : RomanNumeral.values())
+            for (RomanNumeral currentRomanNumeral : RomanNumeral.values())
             {
-                if (r.value < arabicNumberToConvert)
+                if (currentRomanNumeral.value <= remaining)
                 {
-                    result += r.alphabet;
-                    remaining -= r.value;
+                    result += currentRomanNumeral.name();
+                    remaining -= currentRomanNumeral.value;
                     break;
                 }
             }
@@ -98,6 +101,6 @@ public class RomanConverter
 
     private RomanNumeral convertRomanToArabic( char c )
     {
-        return RomanNumeral.getByAlphabet(c);
+        return RomanNumeral.getByAlphabet(String.valueOf(c));
     }
 }
