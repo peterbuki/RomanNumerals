@@ -1,8 +1,5 @@
 package com.peterbuki.romannumerals2;
 
-/**
- * Created by epetbuk on 2016.09.26..
- */
 public class RomanNumerals2
 {
     public static void main(String... args) {

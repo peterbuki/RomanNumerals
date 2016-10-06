@@ -5,9 +5,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by epetbuk on 2016.09.21..
- */
 public class RomanNumerals2Test
 {
     RomanConverter romanConverter = new RomanConverter() ;

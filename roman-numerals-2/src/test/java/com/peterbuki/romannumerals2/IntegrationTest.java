@@ -8,9 +8,6 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by epetbuk on 2016.09.26..
- */
 public class IntegrationTest
 {
     private ByteArrayOutputStream outByteArrayOutputStream;
